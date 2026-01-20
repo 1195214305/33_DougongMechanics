@@ -9,7 +9,7 @@ function DougongModel() {
   const groupRef = useRef<THREE.Group>(null)
   const { showForceVectors, animationSpeed } = useStore()
 
-  useFrame((state) => {
+  useFrame(() => {
     if (groupRef.current) {
       groupRef.current.rotation.y += 0.001 * animationSpeed
     }

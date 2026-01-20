@@ -2,11 +2,9 @@ import { useState } from 'react'
 import DougongViewer from './components/DougongViewer'
 import InfoPanel from './components/InfoPanel'
 import SettingsModal from './components/SettingsModal'
-import { useStore } from './store/useStore'
 
 function App() {
   const [showSettings, setShowSettings] = useState(false)
-  const { selectedStructure } = useStore()
 
   return (
     <div className="min-h-screen traditional-pattern">
