@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useStore } from '../store/useStore'
+import MechanicsCalculator from './MechanicsCalculator'
 
 const dougongStructures = [
   {
@@ -27,7 +28,7 @@ const dougongStructures = [
 
 export default function InfoPanel() {
   const { selectedStructure, setSelectedStructure, showForceVectors, setShowForceVectors } = useStore()
-  const [activeTab, setActiveTab] = useState<'structure' | 'mechanics' | 'ai'>('structure')
+  const [activeTab, setActiveTab] = useState<'structure' | 'mechanics' | 'calculator' | 'ai'>('structure')
   const [aiQuestion, setAiQuestion] = useState('')
   const [aiResponse, setAiResponse] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -71,10 +72,10 @@ export default function InfoPanel() {
     <div className="space-y-4">
       {/* 标签切换 */}
       <div className="bg-chinese-black/80 backdrop-blur-md rounded-xl border border-chinese-gold/30 p-2">
-        <div className="flex space-x-2">
+        <div className="grid grid-cols-2 gap-2">
           <button
             onClick={() => setActiveTab('structure')}
-            className={`flex-1 py-2 px-4 rounded-lg transition-colors ${
+            className={`py-2 px-3 rounded-lg transition-colors text-sm ${
               activeTab === 'structure'
                 ? 'bg-chinese-red text-white'
                 : 'text-gray-400 hover:text-white'
@@ -84,7 +85,7 @@ export default function InfoPanel() {
           </button>
           <button
             onClick={() => setActiveTab('mechanics')}
-            className={`flex-1 py-2 px-4 rounded-lg transition-colors ${
+            className={`py-2 px-3 rounded-lg transition-colors text-sm ${
               activeTab === 'mechanics'
                 ? 'bg-chinese-red text-white'
                 : 'text-gray-400 hover:text-white'
@@ -93,8 +94,18 @@ export default function InfoPanel() {
             力学原理
           </button>
           <button
+            onClick={() => setActiveTab('calculator')}
+            className={`py-2 px-3 rounded-lg transition-colors text-sm ${
+              activeTab === 'calculator'
+                ? 'bg-chinese-red text-white'
+                : 'text-gray-400 hover:text-white'
+            }`}
+          >
+            力学计算器
+          </button>
+          <button
             onClick={() => setActiveTab('ai')}
-            className={`flex-1 py-2 px-4 rounded-lg transition-colors ${
+            className={`py-2 px-3 rounded-lg transition-colors text-sm ${
               activeTab === 'ai'
                 ? 'bg-chinese-red text-white'
                 : 'text-gray-400 hover:text-white'
@@ -174,6 +185,11 @@ export default function InfoPanel() {
             </div>
           )}
         </div>
+      )}
+
+      {/* 力学计算器 */}
+      {activeTab === 'calculator' && (
+        <MechanicsCalculator />
       )}
 
       {/* AI助手 */}
