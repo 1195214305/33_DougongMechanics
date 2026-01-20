@@ -1,0 +1,13 @@
+{
+  "name": "dougong-mechanics",
+  "version": "1.0.0",
+  "description": "斗拱之美 - 古代建筑力学演示平台",
+  "scripts": {
+    "install": "cd frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "dev": "cd frontend && npm run dev"
+  },
+  "keywords": ["dougong", "architecture", "mechanics", "3d", "visualization"],
+  "author": "",
+  "license": "MIT"
+}
